@@ -260,11 +260,6 @@ footer{
 <body>
 
 
-<div id="apiData"></div>
-
-
-
-
 <nav id="top-nav">
   <a href="index.html">Home</a>
   <a href="design.html">Design</a>
@@ -330,30 +325,10 @@ footer{
 </footer>
   <br>
   
-<script>
-  async function loadAPI() {
-    try {
-      let response = await fetch("https://jsonplaceholder.typicode.com/posts");
-      let data = await response.json();
-
-      document.getElementById("apiData").innerHTML =
-        data.slice(0, 5).map(item => `
-          <p>
-            <strong>${item.title}</strong><br>
-            ${item.body}
-          </p>
-        `).join("");
-  
-    } catch (error) {
-      console.log("Error loading API:", error);
-    }
-  }
-
-  loadAPI();
-</script>
 
   
 </body>
 </html>
+
 
 
