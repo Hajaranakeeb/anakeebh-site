@@ -9,13 +9,12 @@
 /* GLOBAL LOCK */
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
     background-color: rgb(48, 14, 125);
-    overflow-x: hidden; /* no horizontal scroll on mobile */
+    margin: 0;
+    overflow-x: auto; /* allow horizontal scroll if needed */
 }
 
 /* SHARED SECTION STYLE */
@@ -31,14 +30,20 @@ section {
 section.top {
     height: 100px;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-width: 1100px; /* matches main-container width for horizontal scroll */
 }
 
-/* MAIN LAYOUT */
+.top-inner {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* keep the title centered */
+}
+
+/* MAIN LAYOUT — FIXED */
 .main-container {
     display: flex;
+    min-width: 1100px; /* prevents collapse in inspect */
+    height: calc(100vh - 120px);
     gap: 30px;
 }
 
@@ -52,7 +57,7 @@ section.sidebar {
 .sidebar aside {
     display: flex;
     flex-direction: column;
-    gap: 50px; /* reduced for mobile-friendly spacing */
+    gap: 100px;
     padding-left: 15px;
 }
 
@@ -73,6 +78,7 @@ section.sidebar {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .centered-image {
@@ -96,29 +102,26 @@ p {
     100% { border-color: rgb(66, 5, 5); }
 }
 
-/* --- RESPONSIVE MOBILE --- */
+/* --- MOBILE FIXS --- */
 @media (max-width: 600px) {
+    /* main container shrinks */
     .main-container {
-        flex-direction: column; /* stack for small screens */
-        align-items: center;
+        min-width: 100%;
     }
 
-    section.sidebar {
-        width: 100%; /* full width for sidebar */
-        padding-top: 20px;
-    }
-
-    .sidebar aside {
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 10px;
-        padding-left: 0;
-    }
-
+    /* image slightly smaller to fit */
     .centered-image {
-        max-width: 95%; /* shrink image for mobile */
-        max-height: 50vh;
-        margin: 10px 0;
+        max-width: 90%;
+        max-height: 60vh;
+    }
+
+    /* top bar width matches scrollable content */
+    section.top {
+        min-width: 1100px; /* same as main-container */
+    }
+
+    body, html {
+        overflow-x: auto; /* keep scroll so top bar can expand */
     }
 }
 </style>
@@ -127,7 +130,9 @@ p {
 <body>
     
 <section class="top">
-    <p>P🤖X👾L</p>
+    <div class="top-inner">
+        <p>P🤖X👾L</p>
+    </div>
 </section>
 
 <div class="main-container">
