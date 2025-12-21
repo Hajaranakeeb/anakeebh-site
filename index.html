@@ -9,12 +9,13 @@
 /* GLOBAL LOCK */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: rgb(48, 14, 125);
-    margin: 0;
-    overflow-x: auto; /* allow scroll instead of breaking */
+    overflow-x: hidden; /* no horizontal scroll on mobile */
 }
 
 /* SHARED SECTION STYLE */
@@ -30,27 +31,28 @@ section {
 section.top {
     height: 100px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* MAIN LAYOUT — FIXED */
+/* MAIN LAYOUT */
 .main-container {
     display: flex;
-    min-width: 1100px; /* prevents collapse in inspect */
-    height: calc(100vh - 120px);
     gap: 30px;
 }
 
 /* SIDEBAR */
 section.sidebar {
     width: 190px;
-    flex-shrink: 0; /* NEVER shrink */
+    flex-shrink: 0;
     padding-top: 30px;
 }
 
 .sidebar aside {
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 50px; /* reduced for mobile-friendly spacing */
     padding-left: 15px;
 }
 
@@ -71,7 +73,6 @@ section.sidebar {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* image cannot escape */
 }
 
 .centered-image {
@@ -84,8 +85,6 @@ section.sidebar {
 
 /* TITLE */
 p {
-    position: relative;
-    left: 45%;
     font-size: 200%;
     white-space: nowrap;
 }
@@ -96,13 +95,37 @@ p {
     50% { border-color: bisque; }
     100% { border-color: rgb(66, 5, 5); }
 }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 600px) {
+    .main-container {
+        flex-direction: column; /* stack for small screens */
+        align-items: center;
+    }
+
+    section.sidebar {
+        width: 100%; /* full width for sidebar */
+        padding-top: 20px;
+    }
+
+    .sidebar aside {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 10px;
+        padding-left: 0;
+    }
+
+    .centered-image {
+        max-width: 95%; /* shrink image for mobile */
+        max-height: 50vh;
+        margin: 10px 0;
+    }
+}
 </style>
 </head>
 
 <body>
     
-    
-
 <section class="top">
     <p>P🤖X👾L</p>
 </section>
