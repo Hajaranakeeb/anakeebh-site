@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P101</title>
+
+<style>
+/* GLOBAL LOCK */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(48, 14, 125);
+    margin: 0;
+    overflow-x: auto; /* allow scroll instead of breaking */
+}
+
+/* SHARED SECTION STYLE */
+section {
+    border: 5px solid white;
+    animation: Hello 4s infinite;
+    background-image: url('https://images.pexels.com/photos/7026427/pexels-photo-7026427.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* TOP BAR */
+section.top {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+/* MAIN LAYOUT — FIXED */
+.main-container {
+    display: flex;
+    min-width: 1100px; /* prevents collapse in inspect */
+    height: calc(100vh - 120px);
+    gap: 30px;
+}
+
+/* SIDEBAR */
+section.sidebar {
+    width: 190px;
+    flex-shrink: 0; /* NEVER shrink */
+    padding-top: 30px;
+}
+
+.sidebar aside {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding-left: 15px;
+}
+
+.sidebar a {
+    font-size: 1.5rem;
+    color: rgb(4, 6, 52);
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: rgb(221, 221, 236);
+    text-decoration: underline;
+}
+
+/* IMAGE AREA */
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* image cannot escape */
+}
+
+.centered-image {
+    width: 100%;
+    max-width: 900px;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 5px solid white;
+}
+
+/* TITLE */
+p {
+    position: relative;
+    left: 45%;
+    font-size: 200%;
+    white-space: nowrap;
+}
+
+/* BORDER ANIMATION */
+@keyframes Hello {
+    0% { border-color: rgb(66, 5, 5); }
+    50% { border-color: bisque; }
+    100% { border-color: rgb(66, 5, 5); }
+}
+</style>
+</head>
+
+<body>
+    
+    
+
+<section class="top">
+    <p>P🤖X👾L</p>
+</section>
+
+<div class="main-container">
+
+    <section class="sidebar">
+        <aside>
+            <a href="index.html">Home</a>
+            <a href="design.html">Samples</a>
+            <a href="index2.html">Education</a>
+            <a href="about.html">About</a>
+        </aside>
+    </section>
+
+    <div class="image-container">
+        <img
+            class="centered-image"
+            src="https://i.postimg.cc/8zjZjBDS/Untitled.png"
+            alt="image">
+    </div>
+
+</div>
+
+</body>
+</html>
