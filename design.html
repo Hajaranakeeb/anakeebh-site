@@ -2,129 +2,225 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Design</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sample Designs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-    body {
-        background-color: rgb(48, 14, 125);
-        margin: 0;
-        padding: 80px 20px 20px 20px;
-        color: aliceblue;
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
 
-    h3 {
-        margin-bottom: 40px;
-    }
+/* GLOBAL */
 
-    .image-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-    .image-row img {
-        height: 350px;
-        width: 300px;
-        box-sizing: border-box;
-        border: 2px solid white;
-    }
+/* ANIMATED BACKGROUND (same as index) */
 
-    #Aya, #Liah, #tania {
-        margin-bottom: 0;
-        animation: fadeInVisible 3s ease 2s forwards;
-        visibility: hidden;
-    }
+body{
+font-family:'Poppins',sans-serif;
+color:white;
+padding:80px 20px;
 
-    #tiger, #zebra, #cat, #meow, #Ow {
-        animation: Yay 2s ease 4s forwards;
-        visibility: hidden;
-    }
+background: linear-gradient(-45deg,#0f0f1a,#1b1b3a,#2b1f4a,#111130);
+background-size:400% 400%;
+animation:gradientShift 18s ease infinite;
+}
 
-    #zebra {
-        align-self: flex-end;
-        margin-bottom: 0;
-    }
+@keyframes gradientShift{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
 
-    @keyframes Yay {
-        0% { opacity: 0; visibility: hidden; }
-        99% { opacity: 0.99; visibility: visible; }
-        100% { opacity: 1; visibility: visible; }
-    }
+/* SLIDE UP ANIMATION */
 
-    @media (max-width: 1024px) {
-        .image-row img {
-            height: auto;
-            width: 90%;
-            max-width: 350px;
-        }
-        #zebra {
-            align-self: center;
-            margin-top: 20px;
-        }
-    }
+@keyframes slideUp{
+0%{
+opacity:0;
+transform:translateY(40px);
+}
 
-    nav#top-nav {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        display: flex;
-        gap: 10px;
-        z-index: 999;
-    }
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
 
-    nav#top-nav a {
-        color: white;
-        font-size: x-large;
-        text-decoration: none;
-        background-color: rgba(72, 59, 138, 0.733);
-        padding: 10px 15px;
-        border-radius: 10px;
-        display: inline-block;
-        transition: background-color 0.3s ease;
-    }
+/* NAVIGATION */
 
-    nav#top-nav a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
+nav#top-nav{
+position:fixed;
+top:20px;
+right:20px;
+display:flex;
+gap:10px;
+z-index:999;
+}
 
-    @keyframes fadeInVisible {
-        0% { opacity: 0; visibility: hidden; }
-        99% { opacity: 0.99; visibility: visible; }
-        100% { opacity: 1; visibility: visible; }
-    }
+nav#top-nav a{
+color:white;
+font-size:1.2rem;
+text-decoration:none;
+background:#2c2c50;
+padding:10px 16px;
+border-radius:8px;
+transition:.3s;
+}
+
+nav#top-nav a:hover{
+background:#4a4a80;
+}
+
+/* TITLE */
+
+h3{
+text-align:center;
+margin-bottom:40px;
+font-size:2rem;
+letter-spacing:2px;
+
+opacity:0;
+animation:slideUp 1s ease forwards;
+}
+
+/* MASONRY PORTFOLIO LAYOUT */
+
+.gallery{
+column-count:3;
+column-gap:25px;
+max-width:1200px;
+margin:auto;
+}
+
+/* SAMPLE CARD */
+
+.sample{
+break-inside:avoid;
+margin-bottom:25px;
+background:#1a1a2e;
+padding:10px;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,.6);
+transition:.3s;
+
+opacity:0;
+animation:slideUp 1s ease forwards;
+}
+
+/* STAGGERED ANIMATION */
+
+.sample:nth-child(1){animation-delay:.2s;}
+.sample:nth-child(2){animation-delay:.4s;}
+.sample:nth-child(3){animation-delay:.6s;}
+.sample:nth-child(4){animation-delay:.8s;}
+.sample:nth-child(5){animation-delay:1s;}
+.sample:nth-child(6){animation-delay:1.2s;}
+.sample:nth-child(7){animation-delay:1.4s;}
+.sample:nth-child(8){animation-delay:1.6s;}
+.sample:nth-child(9){animation-delay:1.8s;}
+.sample:nth-child(10){animation-delay:2s;}
+
+.sample:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 40px rgba(0,0,0,.8);
+}
+
+/* IMAGE */
+
+.sample img{
+width:100%;
+height:auto;
+display:block;
+border-radius:6px;
+transition:transform .4s ease;
+}
+
+.sample:hover img{
+transform:scale(1.03);
+}
+
+/* TABLET */
+
+@media(max-width:1000px){
+
+.gallery{
+column-count:2;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.gallery{
+column-count:1;
+}
+
+h3{
+font-size:1.6rem;
+}
+
+}
+
 </style>
 </head>
-<body>
-<nav id="top-nav">
-  <a href="index.html" style="
-      font-size: 1.8rem;
-      text-decoration: none;
-      color: aliceblue;
-      background-color: rgba(72,59,138,0.733);
-      padding: 10px 15px;
-      border-radius: 10px;
-      border: 2px solid aliceblue;
-      display: inline-block;
-  ">
-    ← 
-  </a>
-</nav>
 
+<body>
+
+<nav id="top-nav">
+<a href="index.html">← Back</a>
+</nav>
 
 <h3>Sample Designs</h3>
 
-<div class="image-row">
-    <img id="Aya" src="https://i.postimg.cc/CLQ9j81C/127-0-0-1-5500-Hanakeeb2-site-Hanakeeb3-site-My-Portfolio25-option-html.png" alt="Option-image" />
-    <img id="Liah" src="https://i.postimg.cc/50m8V8GZ/127-0-0-1-5500-Hanakeeb2-site-Hanakeeb3-site-My-Portfolio25-option-html-1.png" alt="Option-image" />
-    <img id="tania" src="https://i.postimg.cc/C1xqq6bS/Screenshot-2025-08-07-222033.png" alt="Photo" />
-    <img id="tiger" src="https://i.postimg.cc/D0y3F1VC/Screenshot-2025-08-07-222746.png" alt="tiger-photo" />
-    <img id="zebra" src="https://i.postimg.cc/dVMnmKsq/Screenshot-2025-08-07-223826.png" alt="zebra-photo" />
-    <img id="cat" src="https://i.postimg.cc/sX2tdRGk/Screenshot-2025-08-07-225118.png" alt="cat-photo" >
-    <img id="meow" src="https://i.postimg.cc/4dLvMDpF/127-0-0-1-5500-questions-html-html.png" alt="meow-photo" >
-    <img id="Ow" src="https://i.postimg.cc/jdGpm9X5/127-0-0-1-5500-questions-html-html-1.png" alt="Ow-photo" >
+<div class="gallery">
+
+<div class="sample">
+<img src="https://i.postimg.cc/CLQ9j81C/127-0-0-1-5500-Hanakeeb2-site-Hanakeeb3-site-My-Portfolio25-option-html.png">
 </div>
+
+<div class="sample">
+<img src="https://i.postimg.cc/50m8V8GZ/127-0-0-1-5500-Hanakeeb2-site-Hanakeeb3-site-My-Portfolio25-option-html-1.png">
+</div>
+
+<div class="sample">
+<img src="https://i.postimg.cc/C1xqq6bS/Screenshot-2025-08-07-222033.png">
+</div>
+
+<div class="sample">
+<img src="https://i.postimg.cc/D0y3F1VC/Screenshot-2025-08-07-222746.png">
+</div>
+
+<div class="sample">
+<img src="https://i.postimg.cc/dVMnmKsq/Screenshot-2025-08-07-223826.png">
+</div>
+
+<div class="sample">
+<img src="https://i.postimg.cc/sX2tdRGk/Screenshot-2025-08-07-225118.png">
+</div>
+
+<div class="sample">
+<img src="https://i.postimg.cc/4dLvMDpF/127-0-0-1-5500-questions-html-html.png">
+</div>
+
+<div class="sample">
+<img src="https://i.postimg.cc/jdGpm9X5/127-0-0-1-5500-questions-html-html-1.png">
+</div>
+
+<div class="sample">
+<img src="example.jpg">
+</div>
+
+<div class="sample">
+<img src="example2.jpg">
+</div>
+
+</div>
+
 </body>
 </html>

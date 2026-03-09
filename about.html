@@ -3,94 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>About Me</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-    body {
-        background-color: rgb(48, 14, 125);
-        padding-top: 70px;
-        color: aliceblue;
-        font-family: Arial, sans-serif;
-    }
 
-    h1, p {
-        text-align: center;
-        font-size: xx-large;
-    }
+/* GLOBAL */
 
-    nav#top-nav {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        display: flex;
-        gap: 10px;
-        z-index: 999;
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-    nav#top-nav a {
-        color: white;
-        font-size: x-large;
-        text-decoration: none;
-        background-color: rgba(72, 59, 138, 0.733);
-        padding: 10px 15px;
-        border-radius: 10px;
-        display: inline-block;
-        transition: background-color 0.3s ease;
-    }
+/* SAME ANIMATED BACKGROUND */
 
-    nav#top-nav a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
+body{
+font-family:'Poppins',sans-serif;
+color:white;
+padding:80px 20px;
 
-    #lay, #may, #Kite {
-        animation: Lala 3s ease 1s forwards;
-        visibility: hidden;
-        color: aliceblue;
-    }
+background: linear-gradient(-45deg,#0f0f1a,#1b1b3a,#2b1f4a,#111130);
+background-size:400% 400%;
+animation:gradientShift 18s ease infinite;
+}
 
-    @keyframes Lala {
-        0% { opacity: 0; visibility: hidden; }
-        99% { opacity: 0.99; visibility: visible; }
-        100% { opacity: 1; visibility: visible; }
-    }
+@keyframes gradientShift{
 
-    @media screen and (min-width: 1440px) {
-        p#lay, p#may, p#Kite {
-            margin-top: 13rem; 
-        }
-    }
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+/* NAVIGATION */
+
+nav#top-nav{
+position:fixed;
+top:20px;
+right:20px;
+display:flex;
+gap:10px;
+z-index:999;
+}
+
+nav#top-nav a{
+color:white;
+font-size:1.2rem;
+text-decoration:none;
+background:#2c2c50;
+padding:10px 16px;
+border-radius:8px;
+transition:.3s;
+}
+
+nav#top-nav a:hover{
+background:#4a4a80;
+}
+
+/* PAGE CONTAINER */
+
+.about-container{
+max-width:900px;
+margin:auto;
+text-align:center;
+}
+
+/* TITLE */
+
+h1{
+font-size:2.5rem;
+margin-bottom:40px;
+letter-spacing:2px;
+}
+
+/* CONTENT CARDS */
+
+.about-box{
+background:#1a1a2e;
+padding:30px;
+margin-bottom:25px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,.6);
+
+opacity:0;
+animation:fadeUp 1s ease forwards;
+}
+
+/* STAGGER ANIMATION */
+
+#lay{ animation-delay:0.5s; }
+#may{ animation-delay:1s; }
+#Kite{ animation-delay:1.5s; }
+
+/* TEXT */
+
+.about-box p{
+font-size:1.2rem;
+line-height:1.8;
+}
+
+/* FADE + SLIDE */
+
+@keyframes fadeUp{
+
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+h1{
+font-size:2rem;
+}
+
+.about-box{
+padding:22px;
+}
+
+.about-box p{
+font-size:1rem;
+}
+
+}
+
 </style>
 </head>
+
 <body>
+
 <nav id="top-nav">
-  <a href="index.html" style="
-      font-size: 1.8rem;
-      text-decoration: none;
-      color: aliceblue;
-      background-color: rgba(72,59,138,0.733);
-      padding: 10px 15px;
-      border-radius: 10px;
-      border: 2px solid aliceblue;
-      display: inline-block;
-  ">
-    ← 
-  </a>
+<a href="index.html">← Back</a>
 </nav>
 
+<div class="about-container">
+
 <h1>About This Website</h1>
-<br><br><br>
 
-<p id="lay">
-    This website is focused on creating visually appealing, responsive, and user-friendly online experiences. Its goal is to help businesses present their services effectively.
+<div class="about-box" id="lay">
+<p>
+This website is focused on creating visually appealing, responsive, and user-friendly online experiences. Its goal is to help businesses present their services effectively.
 </p>
-<br><br><br>
+</div>
 
-<p id="may">
-    The website combines thoughtful design with functional development to engage users and achieve business objectives. It is continually updated to incorporate modern frameworks and techniques.
+<div class="about-box" id="may">
+<p>
+The website combines thoughtful design with functional development to engage users and achieve business objectives. It is continually updated to incorporate modern frameworks and techniques.
 </p>
-<br><br>
+</div>
 
-<p id="Kite">
-    The website’s goals are to turn ideas into seamless online experiences, delivering pages that are visually engaging, optimized for performance, and impactful for businesses.
+<div class="about-box" id="Kite">
+<p>
+The website’s goals are to turn ideas into seamless online experiences, delivering pages that are visually engaging, optimized for performance, and impactful for businesses.
 </p>
+</div>
+
+</div>
+
 </body>
 </html>
